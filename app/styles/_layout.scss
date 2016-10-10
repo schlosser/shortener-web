@@ -8,6 +8,26 @@ $content-width: 58.75rem;
   width: 90%;
 }
 
+.app {
+  height: 100%;
+}
+
+.splash-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
 @media screen and (max-width: $phone-landscape-max) {
   .content {
     padding: 0;

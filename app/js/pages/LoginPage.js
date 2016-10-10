@@ -33,15 +33,12 @@ var LoginPage = React.createClass({
   render() {
     return (
       <DocumentTitle title="Login">
-        <section className="login-page">
-
-          <div>
-            Login
-          </div>
-
+        <div className="splash-content">
+          <h1 className="splash">Shortener.io</h1>
+          <p>Your personal URL Shortener</p>
           <div className="button google-login"
             onClick={AuthActions.login}>Login with Google</div>
-        </section>
+        </div>
       </DocumentTitle>
     );
   },
