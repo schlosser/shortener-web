@@ -1,0 +1,26 @@
+html, body {
+  background-color: $dark-gray;
+  color: $white;
+  font-family: $sans;
+  font-size: 16px;
+  font-weight: $regular;
+  height: 100%;
+  line-height: 1.5;
+  position: relative;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: ' ';
+    display: block;
+  }
+}
