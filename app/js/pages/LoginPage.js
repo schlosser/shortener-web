@@ -18,6 +18,7 @@ var LoginPage = React.createClass({
 
   componentDidMount () {
     this.listenTo(AuthStore, this.onAuthChange);
+    firebase.auth().onAuthStateChanged(AuthStore.onAuthStateChanged);
   },
 
   onAuthChange(auth) {

@@ -4,7 +4,7 @@ import React              from 'react';
 
 import AuthActions from './actions/AuthActions';
 import AuthStore   from './stores/AuthStore';
-import Header             from './components/Header';
+import Navbar             from './components/Navbar';
 import Footer             from './components/Footer';
 import firebase from 'firebase';
 
@@ -40,7 +40,7 @@ class App extends React.Component {
     return (
       <div>
 
-        <Header />
+        <Navbar />
 
         {this.renderChildren()}
 

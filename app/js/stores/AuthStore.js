@@ -36,7 +36,7 @@ const AuthStore = Reflux.createStore({
     this.trigger(err);
   },
 
-  asdf() {
+  checkForUser() {
     if (this.user) {
       console.log('checkLoginStatus setting to this.user');
       this.setUser(this.user);

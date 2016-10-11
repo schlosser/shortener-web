@@ -17,16 +17,12 @@ class HomePage extends React.Component {
   render() {
     return (
       <DocumentTitle title="Home">
-        <section className="home-page">
-
-          <div>
-            Home
-          </div>
-
-          <div>
-            <Link to="/search">Search</Link>
-          </div>
-        </section>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
+        <div>Home</div>
       </DocumentTitle>
     );
   }

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-class Header extends React.Component {
+class Navbar extends React.Component {
 
   constructor(props) {
     super(props);
@@ -10,14 +10,14 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header>
+      <nav>
 
-        Header
+        Navbar
 
-      </header>
+      </nav>
     );
   }
 
 }
 
-export default Header;
+export default Navbar;
