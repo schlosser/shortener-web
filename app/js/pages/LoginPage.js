@@ -4,7 +4,7 @@ import React         from 'react';
 import Reflux from 'reflux';
 import AuthStore from '../stores/AuthStore';
 import AuthActions from '../actions/AuthActions';
-import {Router, Link}        from 'react-router';
+import {Router, Link, browserHistory}        from 'react-router';
 import DocumentTitle from 'react-document-title';
 import firebase from 'firebase';
 
@@ -17,11 +17,12 @@ var LoginPage = React.createClass({
   ],
 
   componentDidMount () {
-    this.listenTo(AuthStore, this.onAuthChange);
+    this.listenTo(AuthStore, this.onAuthChanged);
     firebase.auth().onAuthStateChanged(AuthStore.onAuthStateChanged);
   },
 
-  onAuthChange(auth) {
+  onAuthChanged(auth) {
+    console.log('LoginPage:onAuthChanged', auth.user)
     this.setState(auth);
 
     if (this.state.user) {

@@ -4,8 +4,9 @@ import firebase from 'firebase'
 import AuthStore from '../stores/AuthStore';
 
 const loginRequired = function(nextState, replace) {
-  console.log('loginRequired', AuthStore.getUser(), firebase.auth().currentUser);
-  if (!AuthStore.getUser()) {
+  var user = AuthStore.getUser();
+  console.log('loginRequired', user);
+  if (!user) {
     replace({ nextPathname: nextState.location.pathname }, '/login');
   }
 }

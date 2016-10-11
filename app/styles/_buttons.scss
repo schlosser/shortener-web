@@ -1,10 +1,9 @@
 .button {
   @extend %h4;
-  display: inline-block;
+  display: block;
   padding: 0.75rem 1rem;
   border-radius: 2px;
   cursor: pointer;
-
 
   &.google-login {
     background-color: $white;
@@ -15,5 +14,10 @@
     background-position: 0.75rem 0.75rem;
     background-repeat: no-repeat;
     vertical-align: middle;
+  }
+
+  &.text-button {
+    padding: 0;
+    line-height: 1rem;
   }
 }

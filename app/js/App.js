@@ -6,6 +6,7 @@ import AuthActions from './actions/AuthActions';
 import AuthStore   from './stores/AuthStore';
 import Navbar             from './components/Navbar';
 import Footer             from './components/Footer';
+import UrlList             from './components/UrlList';
 import firebase from 'firebase';
 
 const propTypes = {
@@ -26,7 +27,6 @@ class App extends React.Component {
 
   componentWillMount() {
     console.log('About to mount App');
-
   }
 
   renderChildren() {
@@ -39,13 +39,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
         <Navbar />
-
-        {this.renderChildren()}
-
+        <div className="sidebar">
+          <UrlList />
+        </div>
+        <div className="details">
+          {this.renderChildren()}
+        </div>
         <Footer />
-
       </div>
     );
   }

@@ -10,21 +10,35 @@ $monospace: 'Inconsolata', monospace;
 
 h1, %h1 {
   font-size: 2.25rem;
+  font-family: $monospace;
   font-weight: $regular;
   letter-spacing: 0.5px;
 
-  &.splash {
-    font-family: $monospace;
+  &.site-title {
+    font-size: 1.2rem;
+    line-height: 1rem;
+  }
+
+  &.page-title {
+    font-size: 0.9rem;
+    line-height: 1;
+    margin-bottom: 0.15rem;
   }
 }
 
 h2, %h2 {
-  font-size: 1.5rem;
+  font-family: $monospace;
+  font-size: 1.2rem;
+
+  &.page-subtitle {
+    font-size: 0.65rem;
+    line-height: 1;
+  }
 }
 
 h3, %h3 {
-  font-size: 1.5rem;
-  letter-spacing: 0.5px;
+  font-family: $monospace;
+  font-size: 1rem;
 }
 
 h4, %h4 {
@@ -32,13 +46,13 @@ h4, %h4 {
   line-height: 1rem;
   vertical-align: middle;
   font-weight: $bold;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
 h5, %h5 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
+  font-family: $monospace;
+  font-size: 0.65rem;
 }
 
 p, .p {

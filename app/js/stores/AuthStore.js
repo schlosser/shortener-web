@@ -9,6 +9,7 @@ const AuthStore = Reflux.createStore({
 
   init() {
     this.user = null;
+    this.checked = false;
   },
 
   getState () {
@@ -26,9 +27,8 @@ const AuthStore = Reflux.createStore({
   },
 
   setUser(user) {
-    console.log('setUser', user)
+    console.log('AuthStore:setUser', user);
     this.user = user;
-    console.log('getState: ', this.getState());
     this.trigger(this.getState());
   },
 
@@ -49,13 +49,16 @@ const AuthStore = Reflux.createStore({
   },
 
   onAuthStateChanged(user) {
-    if (user) {
-      // User is signed in
-      console.log('onAuthStateChanged', user);
-      this.setUser(user);
-    } else {
-      // User is signed out
-      console.log('User is signed out');
+    console.log('AuthStore:onAuthStateChanged', this.checked, user);
+    if (!this.checked) {
+      if (user) {
+        // User is signed in
+        this.checked = true;
+        this.setUser(user);
+      } else {
+        // User is signed out
+        console.log('User is signed out');
+      }
     }
   },
 

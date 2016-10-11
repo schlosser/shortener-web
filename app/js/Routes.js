@@ -14,11 +14,11 @@ import loginRequired from './utils/RouteHelpers';
 
 export default (
   <Router history={CreateBrowserHistory()}>
-    <Route path="/login" component={LoginPage} name="LoginPage"/>
-    <Route path="/" component={App}>
-      <IndexRoute component={HomePage} onEnter={loginRequired}/>
-      <Route path="/search" component={SearchPage} onEnter={loginRequired}/>
-      <Route path="*" component={NotFoundPage} />
+    <Route path="/" component={App} onEnter={loginRequired}>
+      <IndexRoute component={HomePage} />
+      <Route path="search" component={SearchPage} />
     </Route>
+    <Route path="/login" component={LoginPage} />
+    <Route path="*" component={NotFoundPage} />
   </Router>
 );

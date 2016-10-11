@@ -1,11 +1,12 @@
 $content-width: 58.75rem;
+$navbar-height: 3rem;
+$sidebar-width: 20rem;
 
 .content {
   @include clearfix;
-  margin: 0 auto;
   max-width: $content-width;
-  padding: 0 0.625rem;
-  width: 90%;
+  padding: 1.5rem;
+  width: 100%;
 }
 
 .app {
@@ -26,6 +27,29 @@ $content-width: 58.75rem;
   p {
     margin-bottom: 1rem;
   }
+}
+
+.sidebar {
+  bottom: 0;
+  left: 0;
+  overflow: scroll;
+  position: fixed;
+  top: $navbar-height;
+  width: $sidebar-width;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.details {
+  background-color: $white;
+  bottom: 0;
+  color: $black;
+  left: $sidebar-width;
+  position: absolute;
+  right: 0;
+  top: $navbar-height;
 }
 
 @media screen and (max-width: $phone-landscape-max) {
