@@ -8,19 +8,20 @@ import AuthStore from './stores/AuthStore';
 import firebaseApp from './utils/Firebase';
 import Console from './components/Console';
 import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
 
 var App = React.createClass({
   mixins: [Reflux.listenTo(AuthStore, 'onAuthStoreChanged')],
 
-  getInitialState() {
-    console.log('App:getInitialState', AuthStore);
-    return {
-      auth: {
-        user: null,
-        isAuthenticated: null
-      }
-    };
-  },
+  // getInitialState() {
+  //   console.log('App:getInitialState', AuthStore);
+  //   return {
+  //     auth: {
+  //       user: null,
+  //       isAuthenticated: null
+  //     }
+  //   };
+  // },
 
   componentWillMount() {
     console.log('About to mount App');
@@ -35,18 +36,18 @@ var App = React.createClass({
   },
 
   render() {
-    const pageContent = (this.state.auth.isAuthenticated !== null) ? (
+    const pageContent = (this.state === null) ? (
       <div>Retrieving authentication state...</div>
     ) : (
-      <div>
-        <Match exactly pattern="/login" />
-        <MatchIfAuthenticated pattern="/" component={Console} />
+      <div className="content">
+        <MatchIfAuthenticated pattern="/console" component={Console} />
+        <Match pattern="/login" component={LoginPage} />
         <Miss component={NotFoundPage} />
       </div>
     );
     return (
       <BrowserRouter>
-        <div>
+        <div className="pageContent">
           { pageContent }
         </div>
       </BrowserRouter>

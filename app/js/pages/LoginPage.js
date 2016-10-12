@@ -1,25 +1,10 @@
 'use strict';
 
 import React         from 'react';
-import Reflux from 'reflux';
-import AuthStore from '../stores/AuthStore';
 import AuthActions from '../actions/AuthActions';
-import {Router, Link, browserHistory}        from 'react-router';
 import DocumentTitle from 'react-document-title';
-import firebase from 'firebase';
 
 var LoginPage = React.createClass({
-  mixins: [
-    Router.State,
-    Router.Navigation,
-    Reflux.connect(AuthStore),
-    Reflux.ListenerMixin
-  ],
-
-  componentDidMount () {
-    this.listenTo(AuthStore, this.onAuthChanged);
-    firebase.auth().onAuthStateChanged(AuthStore.onAuthStateChanged);
-  },
 
   render() {
     return (
@@ -32,7 +17,7 @@ var LoginPage = React.createClass({
         </div>
       </DocumentTitle>
     );
-  },
+  }
 });
 
 export default LoginPage;

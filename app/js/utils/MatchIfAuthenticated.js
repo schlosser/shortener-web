@@ -10,15 +10,15 @@ import {AuthStore} from '../stores/AuthStore';
 const MatchIfAuthenticated = React.createClass({
   mixins: [Reflux.connect(AuthStore, 'auth')],
 
-  getInitialState() {
-    console.log('MatchIfAuthenticated:getInitialState', AuthStore);
-    return {
-      auth: {
-        user: null,
-        isAuthenticated: null
-      }
-    };
-  },
+  // getInitialState() {
+  //   console.log('MatchIfAuthenticated:getInitialState', AuthStore);
+  //   return {
+  //     auth: {
+  //       user: null,
+  //       isAuthenticated: null
+  //     }
+  //   };
+  // },
 
   init(props = { component: Component, ...rest }) {
     this.component = Component;
@@ -26,6 +26,7 @@ const MatchIfAuthenticated = React.createClass({
   },
 
   render() {
+    const Component = this.component;
     return (
       <Match {...this.rest} render={props => (
         this.state.auth.isAuthenticated ? (
