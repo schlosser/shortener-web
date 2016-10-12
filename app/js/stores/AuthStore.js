@@ -2,78 +2,57 @@
 
 import Reflux from 'reflux';
 import AuthActions from '../actions/AuthActions';
-import * as firebase from 'firebase';
+import firebaseApp from '../utils/Firebase';
 
 const AuthStore = Reflux.createStore({
   listenables: AuthActions,
 
-  init() {
-    this.user = null;
-    this.checked = false;
+  init: function() {
+    this.auth = this.getInitialState();
   },
 
-  getState () {
+  getInitialState: function() {
     return {
-      user: this.getUser()
+      user: null,
+      // This will be null until we know for a fact if we're authenticated or not
+      // (because onAuthStateChanged was called).
+      isAuthenticated: null
     };
   },
 
-  getUser() {
-    if (!this.user) {
-      this.user = firebase.auth().currentUser;
+  onAuthStateChanged: function(user) {
+    console.log('AuthStore:onAuthStateChanged', user);
+    if (user) {
+      // User is signed in
+      console.log('User is signed in');
+      console.log(this);
+      this.auth = {
+        user: user,
+        isAuthenticated: true
+      };
+    } else {
+      // User is signed out
+      console.log('User is signed out');
+      this.auth = {
+        user: null,
+        isAuthenticated: false
+      };
     }
 
-    return this.user;
+    console.log('AuthStore: state:', this.auth);
+    this.trigger(this.auth);
   },
 
-  setUser(user) {
-    console.log('AuthStore:setUser', user);
-    this.user = user;
-    this.trigger(this.getState());
+  onSignIn: function() {
+    console.log("Signing in user...");
+    const provider = new firebaseApp.auth.GoogleAuthProvider();
+    firebaseApp.auth().signInWithPopup(provider);
   },
 
-  throwError(err) {
-    this.trigger(err);
-  },
-
-  checkForUser() {
-    if (this.user) {
-      console.log('checkLoginStatus setting to this.user');
-      this.setUser(this.user);
-    } else if (firebase.auth().currentUser) {
-      console.log('checkLoginStatus setting to firebase currentUser');
-      this.setUser(firebase.auth().currentUser);
-    }
-
-    return this.user !== null;
-  },
-
-  onAuthStateChanged(user) {
-    console.log('AuthStore:onAuthStateChanged', this.checked, user);
-    if (!this.checked) {
-      if (user) {
-        // User is signed in
-        this.checked = true;
-        this.setUser(user);
-      } else {
-        // User is signed out
-        console.log('User is signed out');
-      }
-    }
-  },
-
-  onLogin() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider);
-  },
-
-  onLogout() {
-    console.log("logoutUser", user);
-    // AuthAPI.logout(this.user).then(() => {
-    //   this.setUser(null);
-    // });
+  onSignOut: function() {
+    console.log("Signing out user...");
+    firebaseApp.auth().signOut();
   }
-
 });
 
 export default AuthStore;

@@ -1,0 +1,3 @@
+- Figuring out how to import Firebase, the difference between firebase.auth, firebase.auth(), firebase, firebase.app(), firebase.initializeApp(), etc.
+- Async pattern for onAuthStateChanged() was very confusing, caused many bugs.
+- RefluxJS docs reflect ES6 support that does not exist.

@@ -21,17 +21,6 @@ var LoginPage = React.createClass({
     firebase.auth().onAuthStateChanged(AuthStore.onAuthStateChanged);
   },
 
-  onAuthChanged(auth) {
-    console.log('LoginPage:onAuthChanged', auth.user)
-    this.setState(auth);
-
-    if (this.state.user) {
-      var redirectUrl = '/';
-      console.log('redirectUrl: ', redirectUrl)
-      this.props.history.push(redirectUrl);
-    }
-  },
-
   render() {
     return (
       <DocumentTitle title="Login">

@@ -1,58 +1,57 @@
 'use strict';
 
-import React              from 'react';
+import React from 'react';
+import Reflux from 'reflux';
+import { BrowserRouter, Match, Miss } from 'react-router';
+import MatchIfAuthenticated from './utils/MatchIfAuthenticated';
+import AuthStore from './stores/AuthStore';
+import firebaseApp from './utils/Firebase';
+import Console from './components/Console';
+import NotFoundPage from './pages/NotFoundPage';
 
-import AuthActions from './actions/AuthActions';
-import AuthStore   from './stores/AuthStore';
-import Navbar             from './components/Navbar';
-import Footer             from './components/Footer';
-import UrlList             from './components/UrlList';
-import firebase from 'firebase';
+var App = React.createClass({
+  mixins: [Reflux.listenTo(AuthStore, 'onAuthStoreChanged')],
 
-const propTypes = {
-  params: React.PropTypes.object,
-  query: React.PropTypes.object,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.array,
-    React.PropTypes.object
-  ])
-};
-
-class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-    firebase.auth().onAuthStateChanged(AuthStore.onAuthStateChanged);
-  }
+  getInitialState() {
+    console.log('App:getInitialState', AuthStore);
+    return {
+      auth: {
+        user: null,
+        isAuthenticated: null
+      }
+    };
+  },
 
   componentWillMount() {
     console.log('About to mount App');
-  }
+    firebaseApp.auth().onAuthStateChanged(AuthStore.onAuthStateChanged.bind(this));
+  },
 
-  renderChildren() {
-    return React.cloneElement(this.props.children, {
-      params: this.props.params,
-      query: this.props.query,
+  onAuthStoreChanged(data) {
+    console.log('App:onAuthStoreChanged', data);
+    this.setState({
+      auth: data
     });
-  }
+  },
 
   render() {
-    return (
+    const pageContent = (this.state.auth.isAuthenticated !== null) ? (
+      <div>Retrieving authentication state...</div>
+    ) : (
       <div>
-        <Navbar />
-        <div className="sidebar">
-          <UrlList />
-        </div>
-        <div className="details">
-          {this.renderChildren()}
-        </div>
-        <Footer />
+        <Match exactly pattern="/login" />
+        <MatchIfAuthenticated pattern="/" component={Console} />
+        <Miss component={NotFoundPage} />
       </div>
     );
+    return (
+      <BrowserRouter>
+        <div>
+          { pageContent }
+        </div>
+      </BrowserRouter>
+    );
   }
-
-}
-
-App.propTypes = propTypes;
+});
 
 export default App;
