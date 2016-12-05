@@ -1,12 +1,13 @@
 nav {
   background-color: $black;
-  box-shadow: 0 0 8px rgba($black, 0.15);
+  box-shadow: rgba($black, 0.117647) 0px 1px 6px, rgba($black, 0.117647) 0px 1px 4px;
+  display: flex;
   height: $navbar-height;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  display: flex;
+  z-index: 1000;
 
   .site-title {
     @extend %h1;

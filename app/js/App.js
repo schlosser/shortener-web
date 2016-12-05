@@ -5,43 +5,25 @@ import Reflux from 'reflux';
 import { BrowserRouter, Match, Miss } from 'react-router';
 import MatchIfAuthenticated from './utils/MatchIfAuthenticated';
 import AuthStore from './stores/AuthStore';
-import firebaseApp from './utils/Firebase';
+import * as firebase from 'firebase';
 import Console from './components/Console';
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
 
-var App = React.createClass({
-  mixins: [Reflux.listenTo(AuthStore, 'onAuthStoreChanged')],
-
-  // getInitialState() {
-  //   console.log('App:getInitialState', AuthStore);
-  //   return {
-  //     auth: {
-  //       user: null,
-  //       isAuthenticated: null
-  //     }
-  //   };
-  // },
+const App = React.createClass({
+  mixins: [Reflux.connect(AuthStore, 'auth')],
 
   componentWillMount() {
-    console.log('About to mount App');
-    firebaseApp.auth().onAuthStateChanged(AuthStore.onAuthStateChanged.bind(this));
-  },
-
-  onAuthStoreChanged(data) {
-    console.log('App:onAuthStoreChanged', data);
-    this.setState({
-      auth: data
-    });
+    firebase.auth().onAuthStateChanged(AuthStore.onAuthStateChanged.bind(this));
   },
 
   render() {
-    const pageContent = (this.state === null) ? (
+    const pageContent = (this.state.auth.isAuthenticated === null) ? (
       <div>Retrieving authentication state...</div>
     ) : (
       <div className="content">
-        <MatchIfAuthenticated pattern="/console" component={Console} />
         <Match pattern="/login" component={LoginPage} />
+        <MatchIfAuthenticated component={Console} pattern="/"/>
         <Miss component={NotFoundPage} />
       </div>
     );

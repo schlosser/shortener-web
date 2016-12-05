@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import AuthActions from '../actions/AuthActions';
 
 class Navbar extends React.Component {
 
@@ -19,7 +20,7 @@ class Navbar extends React.Component {
           <h2 className="page-subtitle">https://www.google.com/</h2>
         </div>
         <div className="nav-content">
-          <div className="button text-button">Sign out</div>
+          <div className="button text-button" onClick={AuthActions.signOut}>Sign out</div>
         </div>
       </nav>
     );

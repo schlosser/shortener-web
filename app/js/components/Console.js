@@ -6,23 +6,20 @@ import AuthActions from '../actions/AuthActions';
 import AuthStore from '../stores/AuthStore';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import UrlList from './UrlList';
+import ShortlinkList from './ShortlinkList';
+import ShortlinkDetail from './ShortlinkDetail';
 
 class Console extends React.Component {
-
-  componentWillMount() {
-    console.log('About to mount Console');
-  }
 
   render() {
     return (
       <div>
         <Navbar />
         <div className="sidebar">
-          <UrlList />
+          <ShortlinkList />
         </div>
         <div className="details">
-          {this.renderChildren()}
+          <ShortlinkDetail />
         </div>
         <Footer />
       </div>
@@ -31,3 +28,4 @@ class Console extends React.Component {
 }
 
 export default Console;
+

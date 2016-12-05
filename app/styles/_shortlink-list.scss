@@ -1,11 +1,11 @@
-.url-list {
-  .url-list-item {
+.shortlink-list {
+  .shortlink-list-item {
     padding: 0.75rem 1.5rem;
     border-bottom: 1px solid $medium-gray;
     cursor: pointer;
     user-select: none;
 
-    &.active {
+    &.selected {
       background-color: $white;
       color: $black;
     }
