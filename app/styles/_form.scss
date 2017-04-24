@@ -1,0 +1,124 @@
+form {
+  background-color: $white;
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  padding: 0 1.5rem;
+
+  .text-size-calculator {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  .form-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0.75rem;
+    position: relative;
+
+    &.form-input-slug input {
+      box-sizing: content-box;
+      padding-right: 0;
+    }
+
+    &.form-input-longurl {
+      flex: 1;
+      padding-left: 1.25rem
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .input-prefix {
+      line-height: 1.5;
+      margin-top: 0.35rem;
+      padding-left: 0.75rem;
+      position: absolute;
+      left: 0.75rem;
+      top: 1px;
+      bottom: 0;
+
+      + input {
+        padding-left: 3.6rem;
+      }
+    }
+
+    input {
+      line-height: 1.5;
+      padding: 0.25rem 0.75rem;
+      margin: 0;
+      border: 0;
+      outline: 0;
+      transition: 0.2s linear border-color;
+      width: 100%;
+
+      &[type="text"] {
+        @extend %p;
+        border: 1px solid $transparent;
+
+        &:hover {
+          border-color: rgba($black, 0.2);
+        }
+
+        &:focus {
+          border-color: $black;
+        }
+      }
+
+      &::-webkit-input-placeholder {
+        @extend %p;
+      }
+
+      &[type="submit"] {
+        transition: 0.3s ease opacity;
+        opacity: 0;
+      }
+    }
+
+    &.has-errors {
+      input, input:focus, input:hover {
+        color: $red;
+        border-color: $red;
+      }
+
+      .error-text {
+        display: block;
+      }
+    }
+
+    .error-text {
+      position: absolute;
+      top: 100%;
+      min-width: 10rem;
+      left: 1.5rem;
+      padding-top: 0.25rem;
+      color: red;
+      display: none;
+    }
+  }
+
+  &.can-save {
+    .form-input {
+      input[type="submit"] {
+        opacity: 1;
+      }
+
+      input[type="text"] {
+        border-color: rgba($black, 0.2);
+
+        &:focus {
+          border-color: $black;
+        }
+      }
+
+      &.has-errors {
+        input, input:focus, input:hover {
+          color: $red;
+          border-color: $red;
+        }
+      }
+    }
+  }
+}

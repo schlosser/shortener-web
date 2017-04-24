@@ -2,11 +2,13 @@
   @extend %h4;
   display: block;
   padding: 0.75rem 1rem;
-  border-radius: 2px;
   cursor: pointer;
+  border: 0;
+  outline: 0;
 
   &.google-login {
     background-color: $white;
+    border-radius: 2px;
     color: $black;
     padding-left: 2.5rem;
     background-image:url('/images/google.png');
@@ -19,5 +21,16 @@
   &.text-button {
     padding: 0;
     line-height: 1rem;
+  }
+
+  &.black {
+    background-color: $dark-gray;
+    border-radius: 2px;
+    color: $white;
+  }
+
+  &:hover {
+    border: 0;
+    outline: 0;
   }
 }

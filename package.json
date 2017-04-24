@@ -47,13 +47,13 @@
     "jsdom": "^8.0.2",
     "lodash": "^3.10.0",
     "mocha": "^2.3.3",
+    "prop-types": "^15.5.8",
     "react": "^15.0.0",
     "react-addons-test-utils": "^15.0.0",
     "react-document-title": "^2.0.1",
     "react-dom": "^15.0.0",
     "react-history": "^0.14.0",
-    "react-router": "4.0.0-alpha.4",
-    "reactfire": "^1.0.x",
+    "react-router-dom": "^4.1.1",
     "reflux": "^0.4.0",
     "run-sequence": "^1.1.1",
     "sinon": "^1.17.1",
@@ -67,5 +67,8 @@
     "lint": "NODE_ENV=test ./node_modules/.bin/gulp lint",
     "test": "NODE_ENV=test ./node_modules/.bin/gulp test",
     "build": "NODE_ENV=production ./node_modules/.bin/gulp prod"
+  },
+  "dependencies": {
+    "firebase": "^3.8.0"
   }
 }

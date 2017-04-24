@@ -14,7 +14,7 @@ nav {
   }
 
   .page-title {
-    margin-top: -0.35rem;
+    @extend %h1;
   }
 
   .nav-content {

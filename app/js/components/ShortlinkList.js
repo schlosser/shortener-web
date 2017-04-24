@@ -1,34 +1,29 @@
 'use strict';
 
 import React from 'react';
-import Reflux from 'reflux';
-import ShortlinkStore from '../stores/ShortlinkStore';
-import ShortlinkActions from '../actions/ShortlinkActions';
+import PropTypes from 'prop-types';
 import ShortlinkListItem from './ShortlinkListItem';
 
-const ShortlinkList = React.createClass({
-  mixins: [Reflux.connect(ShortlinkStore, 'shortlinks')],
+class ShortlinkList extends React.Component {
 
-  componentWillMount() {
-    ShortlinkActions.load();
-  },
+  static get propTypes() {
+    return {
+      items: PropTypes.array,
+    };
+  }
 
   render() {
-    let items = [];
-    for (let shortlink of this.state.shortlinks.items) {
-      items.push(
-        <ShortlinkListItem key={shortlink.slug} shortlink={shortlink} selected={shortlink.slug === this.state.shortlinks.selected}/>
-      );
-    };
-    return this.state.shortlinks.areLoaded ? (
+    return (
       <ul className="shortlink-list">
-        {items}
+        {this.props.items.map(shortlink => (
+          <ShortlinkListItem
+            key={shortlink.slug}
+            shortlink={shortlink}/>
+        ))}
       </ul>
-    ) : (
-      <div>Spinner...</div>
     );
   }
-});
+};
 
 export default ShortlinkList;
 

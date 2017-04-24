@@ -15,14 +15,13 @@ h1, %h1 {
   letter-spacing: 0.5px;
 
   &.site-title {
-    font-size: 1.2rem;
-    line-height: 1rem;
+    font-size: 1.3rem;
+    line-height: 0.8rem;
   }
 
   &.page-title {
-    font-size: 0.9rem;
-    line-height: 1;
-    margin-bottom: 0.15rem;
+    font-size: 1rem;
+    line-height: 1rem;
   }
 }
 
@@ -55,7 +54,7 @@ h5, %h5 {
   font-size: 0.65rem;
 }
 
-p, .p {
+p, %p {
   font-size: 1rem;
 }
 

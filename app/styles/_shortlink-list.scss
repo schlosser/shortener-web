@@ -1,13 +1,73 @@
 .shortlink-list {
+  padding-top: 5rem;
+
   .shortlink-list-item {
     padding: 0.75rem 1.5rem;
     border-bottom: 1px solid $medium-gray;
     cursor: pointer;
     user-select: none;
 
-    &.selected {
-      background-color: $white;
-      color: $black;
+    .shortlink-list-item-long-url {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
     }
+  }
+
+  .active .shortlink-list-item {
+    background-color: $lightest-gray;
+    border-right: 1px solid $dark-gray;
+    color: $black;
+  }
+}
+
+.new-button {
+  @extend %h4;
+  align-items: center;
+  background-color: $white;
+  border-right: 1px solid $lightest-gray;
+  color: $black;
+  display: flex;
+  height: 5rem;
+  left: 0;
+  padding: 0 1.5rem;
+  position: absolute;
+  top: 0;
+  width: $sidebar-width;
+
+  .text-wrapper {
+    display: block;
+
+    .text {
+      display: block;
+      transition: 0.3s ease transform;
+    }
+
+    &::after {
+      display: block;
+      background-color: $black;
+      content: ' ';
+      height: 2px;
+      transform: scale(0, 1);
+      transform-origin: 0 0;
+      transition: 0.3s ease transform;
+    }
+  }
+
+
+  &:hover {
+    color: $black;
+
+    .text-wrapper {
+      .text {
+        transform: translate3d(0, -2px, 0);
+      }
+
+      &::after {
+        transform: scale(1, 1);
+      }
+    }
+
   }
 }

@@ -1,31 +1,42 @@
 'use strict';
 
 import React from 'react';
-import {Match, Redirect} from 'react-router';
-import AuthStore from '../stores/AuthStore';
+import PropTypes from 'prop-types';
+import {Route, Redirect} from 'react-router-dom';
 
 // Matches `...rest` (params passed in) to `Component` if the user is
 // known to be authenticated. Otherwise, redirects to login.
-const MatchIfAuthenticated = React.createClass({
+class MatchIfAuthenticated extends React.Component {
+
+  static get propTypes() {
+    return {
+      component: PropTypes.func,
+      auth: PropTypes.shape({
+        isAuthenticated: PropTypes.bool,
+        user: PropTypes.object,
+      }),
+    };
+  }
+
   render() {
-    let {component: Component, ...rest} = this.props;
+    let {component: Component} = this.props;
     return (
-      <Match {...this.props} render={props => (
-        AuthStore.auth.isAuthenticated === true ? (
+      <Route render={props => (
+        this.props.auth.isAuthenticated === true ? (
           <Component {...props}/>
         ) : (
-          AuthStore.auth.isAuthenticated === false ? (
+          this.props.auth.isAuthenticated === false ? (
             <Redirect to={{
               pathname: '/login',
               state: { fromUrl: props.location }
             }}/>
           ) : (
-            <div>Poop</div>
+            <div>Authenication was null</div>
           )
         )
       )}/>
     );
   }
-});
+};
 
 export default MatchIfAuthenticated;
