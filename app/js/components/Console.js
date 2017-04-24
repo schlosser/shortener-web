@@ -113,7 +113,7 @@ class Console extends React.Component {
     );
 
     return (
-      <div>
+      <div className="content-wrapper">
         <Navbar onSignOut={this.props.onSignOut} />
         <div className="sidebar">
           <Link to="/" className="new-button">

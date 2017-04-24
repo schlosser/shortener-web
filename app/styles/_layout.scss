@@ -2,9 +2,12 @@ $content-width: 58.75rem;
 $navbar-height: 3rem;
 $sidebar-width: 15rem;
 
+.content-wrapper {
+  background-color: $lightest-gray;
+}
+
 .content {
   @include clearfix;
-  background-color: $lightest-gray;
   max-width: $content-width;
   margin: 0 auto;
   padding: 1.5rem;
