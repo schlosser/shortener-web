@@ -198,45 +198,47 @@ class ShortlinkForm extends React.Component {
         !this.state.longUrl.isValid) ? ' has-errors' : '');
     const formClass = this.state.canSave? 'can-save' : '';
     return (
-      <div>
-        <form className={formClass}>
-          <p className="text-size-calculator" ref={(tag) => { this.textSizeCalculator = tag; }}>
-            {this.state.textForWidthCalculation}
-          </p>
-          <div className={slugClass}>
-            <label htmlFor="shortlink-slug" className="input-prefix">{this.prefix}</label>
-            <input autoFocus={this.state.canSave}
-              name="shortlink-slug"
-              id="shortlink-slug"
-              value={this.state.slug.value}
-              type="text"
-              style={{width: this.state.slug.width + 'px'}}
-              onChange={this.handleSlugChange}
-              onBlur={this.handleSlugBlur}
-              placeholder="slug" />
-            <h5 className="error-text">{this.state.slug.errorText}</h5>
-          </div>
-          <span>→</span>
-          <div className={longUrlClass}>
-            <input
-              name="shortlink-longurl"
-              id="shortlink-longurl"
-              value={this.state.longUrl.value}
-              type="text"
-              onChange={this.handleLongUrlChange}
-              onBlur={this.handleLongUrlBlur}
-              placeholder="https://www.mylongurls.com/way/to/long.php"/>
-            <h5 className="error-text">{this.state.longUrl.errorText}</h5>
-          </div>
-          <div className="form-input">
-            <input
-              type="submit"
-              disabled={!this.formIsValid()}
-              className="button"
-              value="Save"
-              onClick={this.handleSubmit}/>
-          </div>
-        </form>
+      <div className="form-wrapper">
+        <div className="content">
+          <form className={formClass}>
+            <p className="text-size-calculator" ref={(tag) => { this.textSizeCalculator = tag; }}>
+              {this.state.textForWidthCalculation}
+            </p>
+            <div className={slugClass}>
+              <label htmlFor="shortlink-slug" className="input-prefix">{this.prefix}</label>
+              <input autoFocus={this.state.canSave}
+                name="shortlink-slug"
+                id="shortlink-slug"
+                value={this.state.slug.value}
+                type="text"
+                style={{width: this.state.slug.width + 'px'}}
+                onChange={this.handleSlugChange}
+                onBlur={this.handleSlugBlur}
+                placeholder="slug" />
+              <h5 className="error-text">{this.state.slug.errorText}</h5>
+            </div>
+            <span>→</span>
+            <div className={longUrlClass}>
+              <input
+                name="shortlink-longurl"
+                id="shortlink-longurl"
+                value={this.state.longUrl.value}
+                type="text"
+                onChange={this.handleLongUrlChange}
+                onBlur={this.handleLongUrlBlur}
+                placeholder="https://www.mylongurls.com/way/to/long.php"/>
+              <h5 className="error-text">{this.state.longUrl.errorText}</h5>
+            </div>
+            <div className="form-input">
+              <input
+                type="submit"
+                disabled={!this.formIsValid()}
+                className="button orange"
+                value="Save"
+                onClick={this.handleSubmit}/>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

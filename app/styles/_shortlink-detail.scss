@@ -1,0 +1,22 @@
+.detail-canvas {
+  padding: 1.5rem;
+  background: $lightest-gray;
+  position: relative;
+
+  section + section {
+    border-top: 1px solid $lightest-gray;
+  }
+}
+
+.click-counts {
+  display: flex;
+
+  .click-count {
+    margin-right: 1.5rem;
+    flex: 1;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

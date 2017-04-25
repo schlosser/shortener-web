@@ -1,9 +1,13 @@
-form {
+.form-wrapper {
   background-color: $white;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+form {
   display: flex;
   align-items: center;
   height: 5rem;
-  padding: 0 1.5rem;
 
   .text-size-calculator {
     visibility: hidden;
@@ -74,6 +78,7 @@ form {
       &[type="submit"] {
         transition: 0.3s ease opacity;
         opacity: 0;
+        height: 2rem;
       }
     }
 

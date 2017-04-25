@@ -16,11 +16,7 @@ class Home extends React.Component {
     return (
       <div>
         <ShortlinkForm onSubmit={this.props.onSubmit}/>
-        <div className="content">
-          <section>
-            <h1>Let's get linking!</h1>
-          </section>
-        </div>
+        <div className="detail-canvas"></div>
       </div>
     );
   }

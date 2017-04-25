@@ -29,6 +29,11 @@
     color: $white;
   }
 
+  &.orange {
+    background-color: $orange;
+    color: $white;
+  }
+
   &:hover {
     border: 0;
     outline: 0;
