@@ -8,6 +8,7 @@ class Navbar extends React.Component {
   static get propTypes() {
     return {
       onSignOut: PropTypes.func,
+      onToggleNav: PropTypes.func,
     };
   }
 
@@ -18,10 +19,15 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav>
-        <div className="nav-content nav-sidebar">
+        <div className="hamburger" onClick={this.props.onToggleNav}>
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+        <div className="nav-content nav-sidebar" onClick={this.props.onToggleNav}>
           <div className="site-title">Shortener</div>
         </div>
-        <div className="nav-content nav-details"></div>
+        <div className="nav-spacer"></div>
         <div className="nav-content">
           <div className="button text-button" onClick={this.props.onSignOut}>Sign out</div>
         </div>

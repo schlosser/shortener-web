@@ -26,7 +26,7 @@ class Console extends React.Component {
     this.state = {
       areLoaded: false,
       items: [],
-      selected: null,
+      navOpen: false,
     };
   }
 
@@ -88,6 +88,12 @@ class Console extends React.Component {
     this.props.history.push('/');
   }
 
+  toggleNav() {
+    this.setState({
+      navOpen: !this.state.navOpen,
+    });
+  }
+
   render() {
     const ShortlinkDetailRoute = (props) => {
       const selectedLink = _.find(this.state.items, (link) => {
@@ -113,9 +119,9 @@ class Console extends React.Component {
     );
 
     return (
-      <div className="content-wrapper">
-        <Navbar onSignOut={this.props.onSignOut} />
-        <div className="sidebar">
+      <div className={'content-wrapper' + (this.state.navOpen ? ' sidebar-open': '')}>
+        <Navbar onSignOut={this.props.onSignOut} onToggleNav={this.toggleNav.bind(this)}/>
+        <div className="sidebar" onClick={this.toggleNav.bind(this)}>
           <Link to="/" className="new-button">
             <span className="text-wrapper">
               <span className="text">Create New Link</span>
@@ -130,6 +136,7 @@ class Console extends React.Component {
             )
           }
         </div>
+        <div className="sidebar-scrim" onTouchStart={this.toggleNav.bind(this)}></div>
         <div className="details">
           <Switch>
             <Route exact path="/" component={HomeRoute}/>

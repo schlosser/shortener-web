@@ -217,7 +217,7 @@ class ShortlinkForm extends React.Component {
                 placeholder="slug" />
               <h5 className="error-text">{this.state.slug.errorText}</h5>
             </div>
-            <span>→</span>
+            <span className="arrow">→</span>
             <div className={longUrlClass}>
               <input
                 name="shortlink-longurl"

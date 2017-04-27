@@ -34,10 +34,8 @@ class ClickCounts extends React.Component {
   }
 
   getClickCountForDays(numDays) {
-    console.log(Date.now() - 1000 * 60 * 60 * 24 * numDays);
     return this.props.clicks ? (
       Object.values(this.props.clicks).filter(click => {
-        console.log(click.t);
         return click.t > (Date.now() - 1000 * 60 * 60 * 24 * numDays);
       }).length
     ) : 0;

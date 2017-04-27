@@ -1,4 +1,5 @@
 nav {
+  align-items: center;
   background-color: $black;
   box-shadow: rgba($black, 0.117647) 0px 1px 6px, rgba($black, 0.117647) 0px 1px 4px;
   display: flex;
@@ -25,7 +26,42 @@ nav {
     width: $sidebar-width;
   }
 
-  .nav-details {
+  .nav-spacer {
     flex: 1;
+  }
+
+  .hamburger {
+    display: none;
+    margin-left: 1rem;
+    width: 1.5rem;
+    height: 1.2rem;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    .bar {
+      width: 100%;
+      height: 3px;
+      background-color: $white;
+    }
+  }
+}
+
+@media screen and (max-width: $phone-landscape-max) {
+  nav {
+    padding: 0 0.75rem;
+
+    .hamburger {
+      display: flex;
+      margin: 0 0.75rem;
+    }
+
+    .site-title {
+      font-size: 1.2rem;
+    }
+
+    .nav-content {
+      padding: 0 0.75rem;
+    }
   }
 }
