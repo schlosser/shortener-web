@@ -22,7 +22,10 @@ class MatchIfAuthenticated extends React.Component {
     let {component: Component} = this.props;
     return (
       <Route render={props => (
-        this.props.auth.isAuthenticated === true ? (
+        (this.props.auth.isAuthenticated === true
+          &&
+         this.props.auth.user.email === 'dan.r.schlosser@gmail.com'
+        ) ? (
           <Component {...props}/>
         ) : (
           this.props.auth.isAuthenticated === false ? (
