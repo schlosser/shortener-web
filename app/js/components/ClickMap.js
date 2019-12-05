@@ -3,7 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {GoogleMap, Marker, withGoogleMap} from 'react-google-maps';
-import MarkerClusterer from 'react-google-maps/lib/addons/MarkerClusterer';
+import MarkerClusterer from 'react-google-maps/lib/components/addons/MarkerClusterer';
 import * as _ from 'lodash';
 
 class ClickMap extends React.Component {
