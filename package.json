@@ -59,7 +59,7 @@
     "run-sequence": "^1.1.1",
     "sinon": "^1.17.1",
     "sinon-as-promised": "^4.0.0",
-    "superagent": "^1.2.0",
+    "superagent": "^8.0.8",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.x",
     "yargs": "^3.27.0"
